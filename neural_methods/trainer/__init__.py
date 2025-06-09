@@ -9,3 +9,6 @@ import neural_methods.trainer.PhysFormerTrainer
 import neural_methods.trainer.PhysMambaTrainer
 import neural_methods.trainer.RhythmFormerTrainer
 import neural_methods.trainer.FactorizePhysTrainer
+import neural_methods.trainer.QEfficientPhysTrainer
+import neural_methods.trainer.QPhysnetTrainer
+import neural_methods.trainer.QTscanTrainer

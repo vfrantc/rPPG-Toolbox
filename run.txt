@@ -1,0 +1,17 @@
+conda create -n rppg-toolbox python=3.8 -y
+conda activate rppg-toolbox
+pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
+cd tools/mamba
+python setup.py install
+
+
+
+CUDA_VISIBLE_DEVICES=0 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_DEEPPHYS_BASIC.yaml > train_deepphys.log 2>&1 &
+CUDA_VISIBLE_DEVICES=1 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_EFFICIENTPHYS.yaml > train_efficientphys.log 2>&1 &
+CUDA_VISIBLE_DEVICES=2 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_PHYSFORMER_BASIC.yaml > train_physformer.log 2>&1 &
+CUDA_VISIBLE_DEVICES=3 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_PHYSNET_BASIC.yaml > train_physnet.log 2>&1 &
+CUDA_VISIBLE_DEVICES=4 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_TSCAN_BASIC.yaml > train_tscan.log 2>&1 &
+CUDA_VISIBLE_DEVICES=5 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_QEFFICIENTPHYS.yaml > train_qefficientphys.log 2>&1 &
+CUDA_VISIBLE_DEVICES=6 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_QPHYSNET_BASIC.yaml > train_qphysnet.log 2>&1 &
+CUDA_VISIBLE_DEVICES=7 nohup python main.py --config_file ./configs/train_our/SCAMPS_SCAMPS_UBFC-rPPG_QTSCAN_BASIC.yaml > train_qtscan.log 2>&1 &

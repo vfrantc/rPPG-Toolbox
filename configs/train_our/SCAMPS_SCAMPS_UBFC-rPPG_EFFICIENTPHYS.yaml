@@ -4,7 +4,7 @@ TRAIN:
   BATCH_SIZE: 4
   EPOCHS: 30
   LR: 9e-3
-  MODEL_FILE_NAME: SCAMPS_SCAMPS_UBFC_deepphys
+  MODEL_FILE_NAME: SCAMPS_SCAMPS_PURE_efficientphys
   PLOT_LOSSES_AND_LR: True
   DATA:
     FS: 30
@@ -17,7 +17,7 @@ TRAIN:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS :
-      DATA_TYPE: ['DiffNormalized','Standardized']
+      DATA_TYPE: ['Standardized']
       LABEL_TYPE: DiffNormalized
       DO_CHUNK: True
       CHUNK_LENGTH: 180
@@ -37,7 +37,7 @@ VALID:
   DATA:
     FS: 30
     DATASET: SCAMPS
-    DO_PREPROCESS: True                  # if first time, should be true
+    DO_PREPROCESS: False                  # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/vladimirfrants9/rPPG-Toolbox/data/SCAMPS/Val"          # Raw dataset path, need to be updated
     CACHED_PATH: "/home/vladimirfrants9/rPPG-Toolbox/PreprocessedData"    # Processed dataset save path, need to be updated
@@ -45,7 +45,7 @@ VALID:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS:
-      DATA_TYPE: [ 'DiffNormalized','Standardized' ]
+      DATA_TYPE: ['Standardized']
       LABEL_TYPE: DiffNormalized
       DO_CHUNK: True
       CHUNK_LENGTH: 180
@@ -63,11 +63,11 @@ VALID:
         W: 72
 TEST:
   METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR', 'BA']
-  USE_LAST_EPOCH: True                      # to use provided validation dataset to find the best epoch, should be false
+  USE_LAST_EPOCH: True
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
-    DO_PREPROCESS: True                    # if first time, should be true
+    DO_PREPROCESS: False                    # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/vladimirfrants9/rPPG-Toolbox/data/UBFC-rPPG"                     # Raw dataset path, need to be updated
     CACHED_PATH: "/home/vladimirfrants9/rPPG-Toolbox/PreprocessedData"    # Processed dataset save path, need to be updated
@@ -75,7 +75,7 @@ TEST:
     BEGIN: 0.0
     END: 1.0
     PREPROCESS:
-      DATA_TYPE: [ 'DiffNormalized','Standardized' ]
+      DATA_TYPE: ['Standardized']
       LABEL_TYPE: DiffNormalized
       DO_CHUNK: True
       CHUNK_LENGTH: 180
@@ -97,10 +97,12 @@ LOG:
   PATH: runs/exp
 MODEL:
   DROP_RATE: 0.2
-  NAME: DeepPhys
+  NAME: EfficientPhys
+  EFFICIENTPHYS:
+    FRAME_DEPTH: 10
 INFERENCE:
   BATCH_SIZE: 4
-  EVALUATION_METHOD: "FFT"        # "FFT" or "peak detection"
+  EVALUATION_METHOD: FFT        # "FFT" or "peak detection"
   EVALUATION_WINDOW:
     USE_SMALLER_WINDOW: False        # Change this if you'd like an evaluation window smaller than the test video length
     WINDOW_SIZE: 10        # In seconds

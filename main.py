@@ -83,6 +83,12 @@ def train_and_test(config, data_loader_dict):
         model_trainer = trainer.PhysMambaTrainer.PhysMambaTrainer(config, data_loader_dict)
     elif config.MODEL.NAME == 'RhythmFormer':
         model_trainer = trainer.RhythmFormerTrainer.RhythmFormerTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QEfficientPhys':
+        model_trainer = trainer.QEfficientPhysTrainer.QEfficientPhysTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QPhysnet':
+        model_trainer = trainer.QPhysnetTrainer.QPhysnetTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QTscan':
+        model_trainer = trainer.QTscanTrainer.QTscanTrainer(config, data_loader_dict)
     else:
         raise ValueError('Your Model is Not Supported  Yet!')
     model_trainer.train(data_loader_dict)
@@ -111,6 +117,12 @@ def test(config, data_loader_dict):
         model_trainer = trainer.PhysMambaTrainer.PhysMambaTrainer(config, data_loader_dict)
     elif config.MODEL.NAME == 'RhythmFormer':
         model_trainer = trainer.RhythmFormerTrainer.RhythmFormerTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QEfficientPhys':
+        model_trainer = trainer.QEfficientPhysTrainer.QEfficientPhysTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QPhysnet':
+        model_trainer = trainer.QPhysnetTrainer.QPhysnetTrainer(config, data_loader_dict)
+    elif config.MODEL.NAME == 'QTscan':
+        model_trainer = trainer.QTscanTrainer.QTscanTrainer(config, data_loader_dict)
     else:
         raise ValueError('Your Model is Not Supported  Yet!')
     model_trainer.test(data_loader_dict)

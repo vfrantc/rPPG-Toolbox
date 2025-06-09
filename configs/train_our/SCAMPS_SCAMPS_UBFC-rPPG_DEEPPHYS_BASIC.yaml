@@ -37,7 +37,7 @@ VALID:
   DATA:
     FS: 30
     DATASET: SCAMPS
-    DO_PREPROCESS: True                  # if first time, should be true
+    DO_PREPROCESS: False                  # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/vladimirfrants9/rPPG-Toolbox/data/SCAMPS/Val"          # Raw dataset path, need to be updated
     CACHED_PATH: "/home/vladimirfrants9/rPPG-Toolbox/PreprocessedData"    # Processed dataset save path, need to be updated
@@ -67,7 +67,7 @@ TEST:
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
-    DO_PREPROCESS: True                    # if first time, should be true
+    DO_PREPROCESS: False                    # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/vladimirfrants9/rPPG-Toolbox/data/UBFC-rPPG"                     # Raw dataset path, need to be updated
     CACHED_PATH: "/home/vladimirfrants9/rPPG-Toolbox/PreprocessedData"    # Processed dataset save path, need to be updated
